@@ -132,3 +132,33 @@ export type GetConnectionTypedQueryErrorResponse = {
     };
     requestId: string;
 };
+
+type ConnectorIconData = {
+    /** Link to source on s3 or icon in base64 format. */
+    standard: string;
+    /** Link to source on s3 or icon in base64 format. */
+    nav: string;
+};
+
+type ConnectorIcon = {conn_type: string} & (
+    | {
+          type: 'data';
+          data: ConnectorIconData;
+      }
+    | {
+          type: 'url';
+          url: ConnectorIconData;
+      }
+);
+
+export type ListConnectorIconsResponse = {
+    icons: ConnectorIcon[];
+};
+
+// export type GetConnectorIconResponse = {
+//     icon: ConnectorIcon;
+// };
+
+// export type GetConnectorIconArgs = {
+//     type: string;
+// };
